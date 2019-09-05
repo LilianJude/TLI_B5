@@ -90,14 +90,14 @@ if(isset($_POST['login'])){
 		if (isset($_SESSION['username'])) { ?>
 			<span>Utilisateur : <span>
 			<?php echo ($_SESSION['username']); ?>
-			</br><button class="small"><a href="logout.php">Deconnexion</a></button>
+			</br><form><input type="submit" name="logout" value="Déconnexion" onclick="location.href='logout.php';"/>
 			<?php }
 	?>
 	
 	<!-- Menu Horizontal -->
 	<div class="grid flex">
 		<ul class="menu">
-			<li><a href="accueil.php">Accueil</a></li>
+			<li><a href="accueil.php" tabindex="1">Accueil</a></li>
 			<li><a href="inscription.php">Inscription</a></li>
 			
 			
