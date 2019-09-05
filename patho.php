@@ -17,12 +17,6 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
     exit;
 }
  
- 
-/**
- * Print out something that only logged in users can see.
- */
- 
-echo 'Congratulations! You are logged in!';
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +30,15 @@ echo 'Congratulations! You are logged in!';
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
 </head>
 <body>
-	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img>
+	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
+	
+		<?php 
+		if (isset($_SESSION['username'])) { ?>
+			<span>Utilisateur : <span>
+			<?php echo ($_SESSION['username']); ?>
+			</br><button class="small"><a href="logout.php">Deconnexion</a></button>
+			<?php }
+		?>
 		<!-- Menu Horizontal -->
 	<div class="grid flex">
 		<ul class="menu">
