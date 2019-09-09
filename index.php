@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
 <?php
+
   // Initialisation de l'environnement
   include('./config/config_init.php');
 
@@ -23,20 +22,3 @@
 
   $smarty->display(_TPL_ . 'footer.tpl');
 ?>
-<head>
-    <meta charset="UTF-8">
-    <title>Acupuncture</title>
-</head>
-    <header>
-
-    </header>
-
-    <nav>
-
-    </nav>
-
-    <footer>
-
-    </footer>
-</body>
-</html>
