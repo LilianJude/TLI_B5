@@ -22,12 +22,12 @@ class Member
 	{
 		if($this->usernameExists($u))
 		{
-			$q = $this->db->pdo->prepare("select id, password from membre where username = ?");
+			$q = $this->db->prepare("select id, password from membre where username = ?");
 			$q->execute([$u]);
 			$row = $q->fetch(PDO::FETCH_ASSOC);
-			$pass = $row['password'];
+			$pass = $row['pass'];
 
-			if(password_verify($_POST['password'], $pass))
+			if(password_verify($_POST['pass'], $pass))
 			{
 				$this->username = $u;
 				$this->id = $row['id'];
@@ -57,7 +57,7 @@ class Member
 	//bool
 	public function usernameExists($u)
 	{
-		$q = $this->db->pdo->prepare("select username from membre where username = ?");
+		$q = $this->db->prepare("select username from membre where username = ?");
 		$q->execute([$u]);
 		return $q->fetch(PDO::FETCH_ASSOC);
 	}

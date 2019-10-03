@@ -2,6 +2,7 @@
 
   // Initialisation de l'environnement
   include('./config/config_init.php');
+  include('./models/Member.class.php');
 
   // Gestion de Routing
   if (isset($_GET['action']) && file_exists(_CTRL_.'action/'.str_replace('.', '', $_GET['action']).'.php'))
@@ -21,4 +22,6 @@
       $smarty->display(_TPL_ . 'pages/home.tpl');
 
   $smarty->display(_TPL_ . 'footer.tpl');
+
+
 ?>

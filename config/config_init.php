@@ -16,13 +16,19 @@ foreach ($files as $filename)
 }
 
 // Connexion Database
-try {
-$bdd = new PDO("mysql:host=localhost;dbname=acu", "root", "");
-$bdd->query("SET NAMES UTF8");
-} catch (Exception $e) {
-    echo "Problème de connexion à la base de donnée...";
-    die();
+function getDB(){
+  try {
+    $bdd = new PDO("mysql:host=localhost;dbname=acu", "root", "");
+    $bdd->query("SET NAMES UTF8");
+    return $bdd;
+  }
+  catch (Exception $e) {
+      echo "Problème de connexion à la base de donnée...";
+      die();
+  }
 }
+
+getDB();
 
 // Initialisation Smarty
 $smarty = new Smarty();
