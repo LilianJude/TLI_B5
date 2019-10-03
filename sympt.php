@@ -7,7 +7,8 @@
  */
 session_start();
  
- 
+#require 'connect.php';
+include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,9 +47,20 @@ session_start();
 		</ul>
 	</div>
 	<div class="grid flex">
-		<label for="select1">Selection </label>
-		<select id="select1">
-		</select>
+		<label for="select1">Symptome </label>
+		<p>
+		<select>
+		<?php
+			$reponse = $pdo->query('SELECT * FROM symptome');
+
+			// On affiche chaque entrée une à une
+			while ($donnees = $reponse->fetch()){
+				echo '<option>'.$donnees['descr'].'</option>';
+			}
+		?>
+
+
+		</p>
 	</div>
 </body>
 </html>

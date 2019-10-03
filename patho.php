@@ -7,7 +7,8 @@
  */
 session_start();
  
- 
+include 'connect.php';
+
 /**
  * Check if the user is logged in.
  */
@@ -36,7 +37,7 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 		if (isset($_SESSION['username'])) { ?>
 			<span>Utilisateur : <span>
 			<?php echo ($_SESSION['username']); ?>
-			</br><button class="small"><a href="logout.php">Deconnexion</a></button>
+			</br><button class="small"><a href="logout.php">Déconnexion</a></button>
 			<?php }
 		?>
 		<!-- Menu Horizontal -->
@@ -50,9 +51,21 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 		</ul>
 	</div>
 	<div class="grid flex">
-		<label for="select1">Selection </label>
-		<select id="select1">
-		</select>
+	<!-- LISTE LES SYMPT PAR PATHOLOGIES : select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $id -->
+		<label for="select1">Pathologie </label>
+		<p>
+		<select>
+		<?php
+			$reponse = $pdo->query('SELECT * FROM `patho`');
+			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
+			// On affiche chaque entrée une à une
+			while ($donnees = $reponse->fetch()){
+				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+			}
+		?>
+
+
+		</p>
 	</div>
 </body>
 </html>
