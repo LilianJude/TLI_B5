@@ -10,24 +10,29 @@
 <body>
   <img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
 
-  <form action="index.php?action=home" method="post">
-			<p>
-				<label for="email">Email:</label>
-				<input type="text" name="email"/>
-			</p>
-			<p>
-				<label for="pass">Mot de passe:</label>
-				<input type="password" name="pass"/>
-			</p>
-			<input type="submit" name="login" value="Connexion"/>
-	</form>
+  {if !isset($smarty.session.username)}
+    <form action="index.php?action=home" method="post">
+  			<p>
+  				<label for="email">Pseudo :</label>
+  				<input type="text" name="email"/>
+  			</p>
+  			<p>
+  				<label for="pass">Mot de passe :</label>
+  				<input type="password" name="pass"/>
+  			</p>
+  			<input type="submit" name="login" value="Connexion"/>
+  	</form>
+  {else}
+    <p>Bonjour {$smarty.session.username} !</p>
+    </br>
+    <input type="submit" name="logout" value="Déconnexion" onclick="location.href='controllers/logout.php';"/>
+  {/if}
 
   <!-- Menu Horizontal -->
   <div class="grid flex">
     <ul class="menu">
       <li><a href="accueil.php">Accueil</a></li>
       <li><a href="inscription.php">Inscription</a></li>
-
 
     <!--  <?php
         if(isset($_SESSION['user_id']) || isset($_SESSION['logged_in'])) { ?>

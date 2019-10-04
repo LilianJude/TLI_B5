@@ -25,12 +25,19 @@ class Member
 			$q = $this->db->prepare("select id, password from membre where username = ?");
 			$q->execute([$u]);
 			$row = $q->fetch(PDO::FETCH_ASSOC);
-			$pass = $row['pass'];
+			$pass = $row['password'];
 
-			if(password_verify($_POST['pass'], $pass))
+//password_verify($_POST['pass'], $pass)
+
+			if($_POST['pass'] == $pass)
 			{
 				$this->username = $u;
 				$this->id = $row['id'];
+
+				//Provide the user with a login session.
+        $_SESSION['user_id'] = $row['id'];
+				$_SESSION['username'] = $this->username;
+        $_SESSION['logged_in'] = time();
 
 				return true;
 			}
