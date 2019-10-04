@@ -20,6 +20,13 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
  
 ?>
 
+<script>
+		function myFunction() {
+		  var x = document.getElementById("keyword").value;
+		  document.getElementById("demo").innerHTML = x;
+		}
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,20 +39,22 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 </head>
 <body>
 	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
-	
-		<?php 
-		if (isset($_SESSION['username'])) { ?>
-			<span>Utilisateur : <span>
-			<?php echo ($_SESSION['username']); ?>
-			</br><button class="small"><a href="logout.php">Déconnexion</a></button>
-			<?php }
-		?>
+	<?php 
+	if (isset($_SESSION['username'])) { ?>
+		<span>Utilisateur : <span>
+		<?php echo ($_SESSION['username']); ?>
+		</br><button class="small"><a href="logout.php">Déconnexion</a></button>
+		<?php }
+	?>
 		<!-- Menu Horizontal -->
 	<div class="grid flex">
 		<ul class="menu">
 			<li><a href="accueil.php">Accueil</a></li>
 			<li><a href="inscription.php">Inscription</a></li>
-			<li><a href="patho.php">Rech. patho</a></li>
+			<?php
+				if(isset($_SESSION['user_id']) || isset($_SESSION['logged_in'])) { ?>
+				<li><a href="patho.php">Rech. patho</a></li>
+			<?php }	?>
 			<li><a href="sympt.php">Rech. sympt</a></li>
 			<li><a href="infos.php">Plus d'infos</a></li>
 		</ul>
@@ -63,9 +72,17 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
 			}
 		?>
-
+		</select>
+		<form name="formkeyword">
+			<textarea name="keyword" id="keyword"></textarea>	
+		</form>
+		<button type="button" onclick="myFunction()">Search</button>
+		<p id="demo"></p>
 
 		</p>
+		<br/>
+		
+		
 	</div>
 </body>
 </html>
