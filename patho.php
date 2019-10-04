@@ -21,10 +21,30 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 ?>
 
 <script>
-		function myFunction() {
-		  var x = document.getElementById("keyword").value;
-		  document.getElementById("demo").innerHTML = x;
-		}
+/* function search_by_keyword() {
+	//var x = document.getElementById("keyword").value;
+	//document.getElementById("result").innerHTML = x;
+
+	var http = new XMLHttpRequest();
+	http.open("POST", "patho.php", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    var params = "keyword=" + document.getElementById("keyword").value; // probably use document.getElementById(...).value
+    http.send(params);
+	return false;
+} */
+function search_by_keyword() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'patho.php');
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send('keyword=' + document.getElementById("keyword").value);
+	return false;
+}
+function press_key_enter(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) { //Enter keycode
+        search_by_keyword();
+    }
+}
 </script>
 
 <!DOCTYPE html>
@@ -73,12 +93,33 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 			}
 		?>
 		</select>
+		<p>Recherche patho par symptome mot-clé :</p>
+		<!-- SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%orteil%"-->
 		<form name="formkeyword">
-			<textarea name="keyword" id="keyword"></textarea>	
-		</form>
-		<button type="button" onclick="myFunction()">Search</button>
-		<p id="demo"></p>
+			<textarea name="keyword" id="keyword" onkeypress="press_key_enter(event, this)"></textarea>	
+			<input type="submit" value="Search" onclick="search_by_keyword()">
 
+		</form>
+		<p id="result"></p>
+		<?php
+			if(!empty($_GET['keyword'])) {
+				echo $_GET['keyword'];
+			}
+		?> 
+		
+		<label for="select1">Pathologie </label>
+		<p>
+		<select>
+		<?php
+			$reponse = $pdo->query('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE %".'<?php $_GET['keyword'] ?>'."%');
+			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
+			// On affiche chaque entrée une à une
+			while ($donnees = $reponse->fetch()){
+				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+			}
+		?>
+		</
+		
 		</p>
 		<br/>
 		

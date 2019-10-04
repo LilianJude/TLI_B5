@@ -87,11 +87,11 @@ if(isset($_POST['login'])){
 	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
 
 	<?php 
-		if (isset($_SESSION['username'])) { ?>
-			<span>Utilisateur : <span>
-			<?php echo ($_SESSION['username']); ?>
-			</br><form><input type="submit" name="logout" value="Déconnexion" onclick="location.href='logout.php';"/>
-			<?php }
+	if (isset($_SESSION['username'])) { ?>
+		<span>Utilisateur : <span>
+		<?php echo ($_SESSION['username']); ?>
+		</br><button class="small"><a href="logout.php">Déconnexion</a></button>
+		<?php }
 	?>
 	
 	<!-- Menu Horizontal -->
