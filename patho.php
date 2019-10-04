@@ -21,17 +21,6 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 ?>
 
 <script>
-/* function search_by_keyword() {
-	//var x = document.getElementById("keyword").value;
-	//document.getElementById("result").innerHTML = x;
-
-	var http = new XMLHttpRequest();
-	http.open("POST", "patho.php", true);
-    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    var params = "keyword=" + document.getElementById("keyword").value; // probably use document.getElementById(...).value
-    http.send(params);
-	return false;
-} */
 function search_by_keyword() {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'patho.php');
@@ -105,21 +94,21 @@ function press_key_enter(e) {
 			if(!empty($_GET['keyword'])) {
 				echo $_GET['keyword'];
 			}
-		?> 
-		
-		<label for="select1">Pathologie </label>
-		<p>
-		<select>
-		<?php
-			$reponse = $pdo->query('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE %".'<?php $_GET['keyword'] ?>'."%');
-			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
-			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch()){
-				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+
+			if(!empty($_GET['keyword'])) { ?>
+			<label for="select2">Pathologie </label>
+			<p>
+			<select>
+			<?php
+				$reponse = $pdo->query('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%'.$_GET['keyword'].'"');
+				#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
+				// On affiche chaque entrée une à une
+				while ($donnees = $reponse->fetch()){
+					echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+				}
 			}
 		?>
-		</
-		
+		</select>
 		</p>
 		<br/>
 		
