@@ -12,29 +12,8 @@ include 'connect.php';
 /**
  * Check if the user is logged in.
  */
-if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
-    //User not logged in. Redirect them back to the login.php page.
-    header('Location: patho.php');
-    exit;
-}
  
 ?>
-
-<script>
-function search_by_keyword() {
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'patho.php');
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send('keyword=' + document.getElementById("keyword").value);
-	return false;
-}
-function press_key_enter(e) {
-    var code = (e.keyCode ? e.keyCode : e.which);
-    if (code == 13) { //Enter keycode
-        search_by_keyword();
-    }
-}
-</script>
 
 <!DOCTYPE html>
 <html>
@@ -43,6 +22,7 @@ function press_key_enter(e) {
 	<title>Pathologies</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/script.js"></script>
 	<script src="js/kickstart.js"></script>
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
 </head>
@@ -53,17 +33,13 @@ function press_key_enter(e) {
 		<span>Utilisateur : <span>
 		<?php echo ($_SESSION['username']); ?>
 		</br><button class="small"><a href="logout.php">Déconnexion</a></button>
-		<?php }
-	?>
+		<?php }?>
 		<!-- Menu Horizontal -->
 	<div class="grid flex">
 		<ul class="menu">
 			<li><a href="accueil.php">Accueil</a></li>
 			<li><a href="inscription.php">Inscription</a></li>
-			<?php
-				if(isset($_SESSION['user_id']) || isset($_SESSION['logged_in'])) { ?>
-				<li><a href="patho.php">Rech. patho</a></li>
-			<?php }	?>
+			<li><a href="patho.php">Rech. patho</a></li>
 			<li><a href="sympt.php">Rech. sympt</a></li>
 			<li><a href="infos.php">Plus d'infos</a></li>
 		</ul>
@@ -82,37 +58,47 @@ function press_key_enter(e) {
 			}
 		?>
 		</select>
-		<p>Recherche patho par symptome mot-clé :</p>
-		<!-- SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%orteil%"-->
-		<form name="formkeyword">
-			<textarea name="keyword" id="keyword" onkeypress="press_key_enter(event, this)"></textarea>	
-			<input type="submit" value="Search" onclick="search_by_keyword()">
-
-		</form>
-		<p id="result"></p>
 		<?php
-			if(!empty($_GET['keyword'])) {
-				echo $_GET['keyword'];
-			}
+		if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
+			<p>Veuillez vous connecter pour accéder à la recherche de pathologie par mot-clé</p>
+		<?php }	?>
+			<p>Recherche patho par symptome mot-clé :</p>
+			<!-- SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%orteil%"-->
+			<form name="formkeyword" id="formkeyword">
+				<textarea name="keyword" id="keyword" onkeypress="press_key_enter(event, this)"></textarea>	
+				<input type="submit" value="Recherche" onclick="search_by_keyword()">
+			</form>
+		<?php
+			if(!(empty($_GET['keyword']))) { 
 
-			if(!empty($_GET['keyword'])) { ?>
-			<label for="select2">Pathologie </label>
-			<p>
-			<select>
-			<?php
 				$reponse = $pdo->query('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%'.$_GET['keyword'].'"');
+				if($reponse ->rowCount() > 0){
 				#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
 				// On affiche chaque entrée une à une
-				while ($donnees = $reponse->fetch()){
-					echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+					?>
+					<label for="select2">Pathologie : </label>
+					<p>
+					<select>
+					<?php
+					while ($donnees = $reponse->fetch()){
+						echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+						}
+
+					?>
+					</select>
+					</p>
+					<br/>
+				<?php 
+				}	
+				else 
+				{
+					?>
+				<p>Il n'y a pas de résultat pour votre requête</p>
+				<?php
 				}
 			}
-		?>
-		</select>
-		</p>
-		<br/>
-		
-		
+				?>
+	
 	</div>
 </body>
 </html>
