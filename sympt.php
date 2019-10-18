@@ -50,7 +50,8 @@ include 'connect.php';
 		<p>
 		<select>
 		<?php
-			$reponse = $pdo->query('SELECT * FROM symptome');
+			$reponse = $pdo->prepare('SELECT * FROM symptome');
+			$reponse->execute();	
 
 			// On affiche chaque entrée une à une
 			while ($donnees = $reponse->fetch()){

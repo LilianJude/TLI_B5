@@ -55,11 +55,25 @@ include 'connect.php';
 		<p>
 		<select>
 		<?php
-			$reponse = $pdo->query('SELECT * FROM `patho`');
+			$reponse = $pdo->prepare('SELECT * FROM `patho`');
+			$reponse->execute();
 			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
 			// On affiche chaque entrée une à une
 			while ($donnees = $reponse->fetch()){
 				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
+			}
+		?>
+		</select><br/><br/>
+		<label for="select1">Méridiens :</label>
+		<p>
+		<select>
+		<?php
+			$reponse = $pdo->prepare('SELECT * FROM `meridien`');
+			$reponse->execute();
+			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
+			// On affiche chaque entrée une à une
+			while ($donnees = $reponse->fetch()){
+				echo '<option value="'.$donnees['code'].'">'.$donnees['nom'].'</option>';
 			}
 		?>
 		</select>
@@ -80,7 +94,8 @@ include 'connect.php';
 		<?php
 			if(!(empty($_GET['keyword']))) { 
 
-				$reponse = $pdo->query('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%'.$_GET['keyword'].'"');
+				$reponse = $pdo->prepare('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%'.$_GET['keyword'].'"');
+				$reponse->execute();
 				if($reponse ->rowCount() > 0){
 				#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
 				// On affiche chaque entrée une à une
@@ -102,7 +117,7 @@ include 'connect.php';
 				else 
 				{
 				?>
-				<p>Il n'y a pas de résultat pour votre requête</p>
+				<p>Il n'y a pas de résultat pour votre requête avec ce mot-clé</p>
 				<?php
 				}
 			}

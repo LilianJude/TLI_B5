@@ -35,11 +35,14 @@ $pdoOptions = array(
 /**
  * Connect to MySQL and instantiate the PDO object.
  */
-$pdo = new PDO(
+try { 
+	$pdo = new PDO(
     "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DATABASE, //DSN
     MYSQL_USER, //Username
     MYSQL_PASSWORD, //Password
     $pdoOptions //Options
 );
+}
+catch (Exeption $e) { die('Erreur : ' .$e->getMessage())  or die(print_r($bdd->errorInfo())); }
 
 //The PDO object can now be used to query MySQL.
