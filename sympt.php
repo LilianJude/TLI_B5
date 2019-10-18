@@ -14,7 +14,7 @@ include 'connect.php';
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Accueil</title>
+	<title>Symptômes</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/kickstart.js"></script>
@@ -35,13 +35,7 @@ include 'connect.php';
 		<ul class="menu">
 			<li><a href="accueil.php">Accueil</a></li>
 			<li><a href="inscription.php">Inscription</a></li>
-			
-			
-			<?php
-			if(isset($_SESSION['user_id']) || isset($_SESSION['logged_in'])) { ?>
-				<li><a href="patho.php">Rech. patho</a></li>
-			<?php }	?>
-			
+			<li><a href="patho.php">Rech. patho</a></li>			
 			<li><a href="sympt.php">Rech. sympt</a></li>
 			<li><a href="infos.php">Plus d'infos</a></li>
 		</ul>

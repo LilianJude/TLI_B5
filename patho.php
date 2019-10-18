@@ -61,7 +61,11 @@ include 'connect.php';
 		<?php
 		if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
 			<p>Veuillez vous connecter pour accéder à la recherche de pathologie par mot-clé</p>
-		<?php }	?>
+		<?php 
+		}
+		else
+		{
+		?>
 			<p>Recherche patho par symptome mot-clé :</p>
 			<!-- SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%orteil%"-->
 			<form name="formkeyword" id="formkeyword">
@@ -92,11 +96,12 @@ include 'connect.php';
 				}	
 				else 
 				{
-					?>
+				?>
 				<p>Il n'y a pas de résultat pour votre requête</p>
 				<?php
 				}
 			}
+		}
 				?>
 	
 	</div>

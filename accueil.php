@@ -101,10 +101,9 @@ if(isset($_POST['login'])){
 			<li><a href="inscription.php">Inscription</a></li>
 			
 			
-			<?php
-				if(isset($_SESSION['user_id']) || isset($_SESSION['logged_in'])) { ?>
-					<li><a href="patho.php">Rech. patho</a></li>
-			<?php }	?>
+
+			<li><a href="patho.php">Rech. patho</a></li>
+
 			
 			<li><a href="sympt.php">Rech. sympt</a></li>
 			<li><a href="infos.php">Plus d'infos</a></li>
