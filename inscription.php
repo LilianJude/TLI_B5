@@ -15,7 +15,7 @@ require 'lib/password.php';
 /**
  * Include our MySQL connection.
  */
-require 'connect.php';
+require 'connectRW.php';
 
 
 //If the POST var "register" exists (our submit button), then we can
