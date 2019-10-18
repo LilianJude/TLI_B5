@@ -74,7 +74,7 @@ if(isset($_POST['login'])){
 
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<title>Accueil</title>
@@ -84,7 +84,7 @@ if(isset($_POST['login'])){
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
 </head>
 <body>
-	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
+	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" alt="Bannière"/><br/><br/>
 
 	<?php 
 	if (isset($_SESSION['username'])) { ?>
@@ -109,7 +109,7 @@ if(isset($_POST['login'])){
 			<li><a href="infos.php">Plus d'infos</a></li>
 		</ul>
 	</div>
-	<div class="grid flex">	<div>
+	<div class="grid flex">
 		<h1>Login</h1>
         <form action="accueil.php" method="post">
             <label for="username">Utilisateur</label>
