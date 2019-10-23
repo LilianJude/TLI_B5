@@ -17,6 +17,7 @@ border-radius:5px;
 position: relative;
 top:0;
 left:0;
+display:inline;
 }
 
 	legend{
@@ -37,6 +38,15 @@ left:0;
 	.msie fieldset{padding-top:25px;}
 	.msie legend{position:absolute;top:-0.7em;left:10px;}
 
+#filters div{
+	float:left;
+	display:inline;
+
+}
+#fs_mer li{
+	list-style:none;	
+}
+	
 label{
 display:inline-block;
 *display:inline;
