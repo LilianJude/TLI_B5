@@ -136,8 +136,9 @@ include 'connect.php';
 						
 					</ul>
 				</div>
-				<br/>
-				<input type="button" value="Tout cocher" onclick="this.value=check('fs_mer')">
+				<div class="input_checkboxes">
+					<input type="button" value="Tout cocher" onclick="this.value=check('fs_mer')">
+				</div>
 				</fieldset>
 				
 				<fieldset id="fs_patho" class="inputPatho">
