@@ -17,7 +17,6 @@ border-radius:5px;
 position: relative;
 top:0;
 left:0;
-display:inline;
 }
 
 	legend{
@@ -38,18 +37,30 @@ display:inline;
 	.msie fieldset{padding-top:25px;}
 	.msie legend{position:absolute;top:-0.7em;left:10px;}
 
-#filters div{
+.inputMer {
 	float:left;
 	display:inline;
-
 }
+.inputMer input{
+	-webkit-box-shadow:inset 0 0px 0px #ccc;
+	box-shadow:inset 0 0px 0px #ccc;
+}
+#fs_patho input{
+	-webkit-box-shadow:inset 0 0px 0px #ccc;
+	box-shadow:inset 0 0px 0px #ccc;
+}
+
 #fs_mer li{
 	list-style:none;	
+}
+
+.input_checkboxes{
+	position:absolute;
+	bottom:0;
 }
 	
 label{
 display:inline-block;
-*display:inline;
 vertical-align: middle;
 margin:0;
 padding:0;
