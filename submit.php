@@ -28,7 +28,7 @@ if(isset($_POST)){
 			echo '<li>'.$donnees['description'].'</li>';
 			}
 	}
-	else {
+	elseif (!(isset($_POST['inputMer'])) && (isset($_POST['inputPatho']))){
 		$inputPatho=$_POST['inputPatho'];
 		$parseinputPatho=preg_match('/[^_]+$/',$inputPatho, $match);
 		$parseinputPatho=$match[0];
@@ -38,6 +38,9 @@ if(isset($_POST)){
 		while ($donnees = $reponse->fetch()){
 			echo '<li>'.$donnees['description'].'</li>';
 			}
+	}
+	else{
+		echo "Veuillez séléctionner un élément.";
 	}
 }
 ?>
