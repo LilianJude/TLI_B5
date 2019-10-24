@@ -109,15 +109,24 @@ if(isset($_POST['login'])){
 			<li><a href="infos.php">Plus d'infos</a></li>
 		</ul>
 	</div>
-	<div class="grid flex">
-		<h1>Login</h1>
-        <form action="accueil.php" method="post">
-            <label for="username">Utilisateur</label>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password"><br>
-            <input type="submit" name="login" value="Login">
-        </form>
-	</div>
+	<?php 
+			if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
+			<div class="grid flex">
+				<h1>Login</h1>
+				<form action="accueil.php" method="post">
+					<label for="username">Utilisateur</label>
+					<input type="text" id="username" name="username"><br>
+					<label for="password">Mot de passe</label>
+					<input type="password" id="password" name="password"><br>
+					<input type="submit" name="login" value="Login">
+				</form>
+			</div>
+			<?php 
+			}else{
+				?>
+				<p>Merci de compter parmi nos membres les plus actifs.</p>
+			<?php
+			}
+			?>	
 </body>
 </html>
