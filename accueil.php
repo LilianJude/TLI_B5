@@ -78,7 +78,6 @@ if(isset($_POST['login'])){
 <head>
 	<meta charset="utf-8">
 	<title>Accueil</title>
-	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/kickstart.js"></script>
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />

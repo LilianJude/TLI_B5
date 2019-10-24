@@ -11,11 +11,10 @@ session_start();
 include 'connect.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<title>Symptômes</title>
-	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/kickstart.js"></script>
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
@@ -46,19 +45,18 @@ include 'connect.php';
 		</ul>
 	</div>
 	<div class="grid flex">
-		<label for="select1">Symptome </label>
-		<p>
-		<select>
+		<p>Symptomes : <br/><br/>
+		<select title="symtome">
 		<?php
 			$reponse = $pdo->prepare('SELECT * FROM symptome');
 			$reponse->execute();	
 
 			// On affiche chaque entrée une à une
 			while ($donnees = $reponse->fetch()){
-				echo '<option>'.$donnees['descr'].'</option>';
+				echo '<option value="'.$donnees['idS'].'">'.$donnees['descr'].'</option>';
 			}
 		?>
-
+		</select>
 
 		</p>
 	</div>

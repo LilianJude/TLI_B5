@@ -78,24 +78,22 @@ if(isset($_POST['register'])){
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Inscription</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="js/kickstart.js"></script>
 		<link rel="stylesheet" href="css/kickstart.css" media="all" />
     </head>
 	<body>
-		<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" ></img></br></br>
+		<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" alt="Bannière"/><br/><br/>
 
 		<?php 
 		if (isset($_SESSION['username'])) { ?>
 			<span>Utilisateur : <span>
 			<?php echo ($_SESSION['username']); ?>
-			</br><button class="small"><a href="logout.php">Deconnexion</a></button>
+			<br/><button class="small"><a href="logout.php">Deconnexion</a></button>
 			<?php }
 		?>
 		<!-- Menu Horizontal -->
@@ -112,10 +110,10 @@ if(isset($_POST['register'])){
 			<h1>Inscription</h1>
 			<form action="inscription.php" method="post">
 				<label for="username">Utilisateur</label>
-				<input type="text" id="username" name="username"><br>
+				<input type="text" id="username" name="username"><br/>
 				<label for="password">Mot de passe</label>
-				<input type="password" id="password" name="password"><br>
-				<input type="submit" name="register" value="Inscription"></button>
+				<input type="password" id="password" name="password"><br/>
+				<input type="submit" name="register" value="Inscription">
 			</form>
 		</div>
     </body>
