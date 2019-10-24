@@ -14,31 +14,44 @@ function search_by_keyword() {
 	return false;
 }
 
-	//inputMer = document.querySelector("input[name=li1]:checked").id;
-
 $(function () {
-    $('#filters_patho').on('submit', function (e) {
-		e.preventDefault();// using this page stop being refreshing 
-		var inputMer = document.querySelector("input[name=li1]:checked").id;
-		var inputPatho = document.querySelector("input[name=li2]:checked").id;
-		var dataString = 'inputMer='+inputMer + '&inputPatho='+ inputPatho;
-		
+$('#filters_patho').submit(function (e) {
+	e.preventDefault();
+	if (document.querySelector('input[type=radio][name=li1]:checked') !== null ){
+		var inputMer = document.querySelector('input[type=radio][name=li1]:checked').id;
+	}
+	//if (typeof document.querySelector('input[type=radio][name=li2]:checked') !== 'undefined' || document.querySelector('input[type=radio][name=li2]:checked') !== null ){
+	if (document.querySelector('input[type=radio][name=li2]:checked') !== null ){
+		var inputPatho = document.querySelector('input[type=radio][name=li2]:checked').id;
+	}
 
-		  $.ajax({
-			type: 'POST',
-			url: 'patho.php',
-			data: dataString,
-		  });
+	$.ajax({
+		url: 'submit.php',
+		type: 'POST', 
+		data: {inputMer: inputMer, inputPatho: inputPatho},
+	}).done(function(data){ // if getting done then call.
 
-		});
-		return false;
+	// show the response
+	$('#result_from_filter').html(data);
+
+	})
+	.fail(function() { // if fail then getting message
+
+	// just in case posting your form failed
+	alert( "Posting failed." );
+
+	});
+
+	// to prevent refreshing the whole page page
+	return false;
+
+	});
 });
 
-function SubmitFormData(){
-	var inputMer = document.querySelector("input[name=li1]:checked").id;
-	var inputPatho = document.querySelector("input[name=li2]:checked").id;
-	$.post("submit.php",{ inputMer: inputMer, inputPatho: inputPatho},
-   function(data) {
-		$('#result_from_filter').html(data);
-   });
-}
+$(function () {
+$('#raz_radio_btn').click(function (e) {
+	e.preventDefault();
+	$('input[name=li1]').prop('checked',false);
+	$('input[name=li2]').prop('checked',false);
+		});
+});

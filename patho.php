@@ -20,7 +20,10 @@ include 'connect.php';
 <head>
 	<meta charset="utf-8">
 	<title>Pathologies</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 	<script src="js/script.js"></script>
 	<script src="js/kickstart.js"></script>
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
@@ -50,21 +53,10 @@ include 'connect.php';
 	</div>
 	<div class="grid flex">
 	<!-- LISTE LES SYMPT PAR PATHOLOGIES : select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $id -->
-		<label for="select1">Pathologie </label>
-		<p>
-		<select>
-		<?php
-			$reponse = $pdo->prepare('SELECT * FROM `patho`');
-			$reponse->execute();
-			#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
-			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch()){
-				echo '<option value="'.$donnees['idP'].'">'.$donnees['description'].'</option>';
-			}
-		?>
-		</select><br/><br/>
 		<div id="filters">
-			<form id="filters_patho">
+			<form id="filters_patho" method="post">
+			<fieldset id="fs_all">
+				<legend>Filtrage des pathologies</legend>
 			<fieldset id="fs_mer">
 				<legend>Méridiens et Merveilleux Vaisseaux</legend>
 				
@@ -140,6 +132,7 @@ include 'connect.php';
 				</fieldset>
 				
 				<fieldset id="fs_patho" class="inputPatho">
+				
 					<legend>Pathologies</legend>
 					<div class="inputPatho">
 						
@@ -157,19 +150,12 @@ include 'connect.php';
 						
 					</div>
 				</fieldset>
-				<input type="button" value="Rechercher" onclick="SubmitFormData();">
+				<input type="button" value="RàZ" id="raz_radio_btn">
+				<input type="submit" value="Rechercher" id="filter_search">
 			</form>
 
 		</div>
 		<span id="result_from_filter">
-		resultat:
-		<?php
-		var_dump($_POST);
-		if(isset($_POST['inputMer'])){
-					echo "pas vide";
-					//if(!(empty($_POST['inputMer']))) 
-				}		
-		?>
 		</span>
 		<?php
 		if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
