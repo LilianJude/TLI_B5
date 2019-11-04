@@ -10,16 +10,16 @@
  */
  
 //Our MySQL user account.
-define('MYSQL_USER', 'acuRW');
+define('MYSQL_USER', 'id11343073_root');
  
 //Our MySQL password.
-define('MYSQL_PASSWORD', 'FS2nZXF57vshkiyS');
+define('MYSQL_PASSWORD', 'wxcvbn90');
  
 //The server that MySQL is located on.
 define('MYSQL_HOST', 'localhost');
 
 //The name of our database.
-define('MYSQL_DATABASE', 'acu');
+define('MYSQL_DATABASE', 'id11343073_acu');
 
 /**
  * PDO options / configuration details.

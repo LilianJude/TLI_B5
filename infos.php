@@ -44,7 +44,30 @@ session_start();
 		</ul>
 	</div>
 	<div class="grid flex">
-		<p>Et vive la médécine chinoise ! </p>
+		<p>
+		<strong>Développements :</strong><br/><br/>
+			Pour l'aspect sécurité : un compte acuRO pour la lecture, un compte acuRW pour l'insertion des données, 2 mots de passe différents. 
+			Les requêtes sont préparées par PDO ce qui permet d'éviter les injections SQL.
+			Le mot de passe root de phpmyadmin a été modifié.
+			<br/><br/>
+			Pour l'aspect développement : L'ensemble du cahier des charges a été réalisé, il est possible de posséder une session PHP, de s'inscrire, de se connecter (et ainsi pouvoir effectuer une recherche par mot-clé).<br/>
+			Les filtres sur les pathologies ont été ajoutés.
+			Les fonctionnalités ont été ajoutées au fur et à mesure, tenant compte de leur difficulté.
+			<br/><br/>
+		<strong>Auteurs : </strong>
+			<ul>
+				<li>Juliette BONIAUD</li>
+				<li>Solène SINNING</li>
+				<li>Lilian JUDE</li>
+				<li>Jérémy MOUGEY</li>
+			</ul>
+		<strong>Sitographie :</strong><br/>
+			<ul>
+				<li><a href="https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript">Apprendre le Javascript</a></li>
+				<li><a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql">Apprendre le PHP et SQL</a></li>
+				<li><a href="https://openclassrooms.com/fr/courses/1631636-simplifiez-vos-developpements-javascript-avec-jquery/1636305-premiers-pas-avec-ajax">Apprendre l'AJAX</a></li>
+			</ul>
+		</p>
 	</div>
 </body>
 </html>
