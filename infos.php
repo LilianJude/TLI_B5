@@ -54,6 +54,9 @@ session_start();
 			Les filtres sur les pathologies ont été ajoutés.
 			Les fonctionnalités ont été ajoutées au fur et à mesure, tenant compte de leur difficulté.
 			<br/><br/>
+			Le projet fonctionne sur une architecture WAMP. L'aspect graphique est issu d'un framework qui n'est pas Bootstrap mais Kickstart.
+			<br/><br/>
+
 		<strong>Auteurs : </strong>
 			<ul>
 				<li>Juliette BONIAUD</li>
