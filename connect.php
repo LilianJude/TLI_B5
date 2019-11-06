@@ -10,10 +10,10 @@
  */
  
 //Our MySQL user account.
-define('MYSQL_USER', 'root');
+define('MYSQL_USER', 'acuRO');
  
 //Our MySQL password.
-define('MYSQL_PASSWORD', 'qN7-3S8_y');
+define('MYSQL_PASSWORD', 'McLWkiZfkyGqGu7x');
  
 //The server that MySQL is located on.
 define('MYSQL_HOST', 'localhost');

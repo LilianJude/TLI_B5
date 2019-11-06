@@ -1,3 +1,38 @@
+$(function(){  
+$("#symptomes").on('input', function() { 
+  $("#symptomes").autocomplete({source: 'autocomplete.php?req='+$("#symptomes").val()}); 
+  }); 
+// $("#symptomes").on('blur',function() { 
+	// $("#resultsympt").text($("#symptomes").val());
+	// });
+$('#submitsympt').submit(function (e) {
+	e.preventDefault();
+	var resultsympt = $("#symptomes").val();
+	console.log(resultsympt)
+	$.ajax({
+		url: 'resultsympt.php',
+		type: 'POST', 
+		data: {resultsympt: resultsympt,},
+	}).done(function(data){ // if getting done then call.
+
+	// show the response
+	$('#resultsympt').html(data);
+
+	})
+	.fail(function() { // if fail then getting message
+
+	// just in case posting your form failed
+	alert( "Posting failed." );
+
+	});
+
+	// to prevent refreshing the whole page page
+	return false;
+
+	});
+
+});   
+
 function press_key_enter() {
 	$('#keyword').keydown(function() {
 		if (event.keyCode == 13) {
@@ -48,6 +83,9 @@ $('#filters_patho').submit(function (e) {
 	});
 });
 
+
+
+
 $(function () {
 $('#raz_radio_btn').click(function (e) {
 	e.preventDefault();
@@ -55,3 +93,4 @@ $('#raz_radio_btn').click(function (e) {
 	$('input[name=li2]').prop('checked',false);
 		});
 });
+

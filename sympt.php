@@ -18,6 +18,10 @@ include 'connect.php';
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/kickstart.js"></script>
 	<link rel="stylesheet" href="css/kickstart.css" media="all" />
+	<link type="text/css" href="jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" /> 
+	<script type="application/javascript" src="jquery-ui/js/jquery-1.9.1.js"></script> 
+	<script type="application/javascript" src="jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="js/script.js"></script>
 </head>
 <body>
 	<img src="https://www.logolynx.com/images/logolynx/33/33803c198c2362596a9124631e199134.jpeg" height="50" width="500" alt="Bannière"/><br/><br/>
@@ -46,19 +50,16 @@ include 'connect.php';
 	</div>
 	<div class="grid flex">
 		<p>Symptomes : <br/><br/>
-		<select title="symtome">
-		<?php
-			$reponse = $pdo->prepare('SELECT * FROM symptome');
-			$reponse->execute();	
 
-			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch()){
-				echo '<option value="'.$donnees['idS'].'">'.$donnees['descr'].'</option>';
-			}
-		?>
-		</select>
-
+		<form action="autocomplete.php" method="post">
+			<p id="box"><input type="text" id="symptomes" name="symptomes"/></p>
+		</form>
+		<form action="resultsympt.php" method="post" id="submitsympt">
+			<p><input type="submit" id="submitsympt" /></p>
+			<span id="resultsympt"></span>
+		</form>
 		</p>
 	</div>
+
 </body>
 </html>
