@@ -58,6 +58,7 @@ include 'connect.php';
 			<p><input type="submit" id="submitsympt" /></p>
 			<span id="resultsympt"></span>
 		</form>
+		<input type="button" value="RàZ" id="raz_radio_btn">
 		</p>
 	</div>
 
