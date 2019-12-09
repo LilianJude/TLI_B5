@@ -37,38 +37,21 @@ Cet utilisateur doit avoir les droits SELECT, INSERT, UPDATE, DELETE sur la base
 
 Rendez-vous sur http://localhost/acupuncture/accueil.php
 
-## Cahiers des charges
+## Fonctionnalités implantées
 
-- [x] Le site devra être aﬃchable et utilisable à partir d’une version de Firefox de moins de deux ans. 
+- [x] Vous réaliserez une page permettant d’aﬃcher la liste des pathologies. Ces pathologies pourront faire l’objet de ﬁltrage comme indiqué en introduction. 
+- [x] Vous implémenterez une fonctionnalité de recherche de pathologie par mot–clef. Cette fonctionnalité ne sera accessible qu’aux utilisateurs authentiﬁés.
+- [x] Vous proposerez un système de gestion des utilisateurs (inscription, login, session, etc.). Un utilisateur connecté aura la possibilité d’accéder à la fonctionnalité de recherche de pathologies par mot–clef
 
 ## Fabriqué avec
 
-Entrez les programmes/logiciels/ressources que vous avez utilisé pour développer votre projet
-
-_exemples :_
-* [Materialize.css](http://materializecss.com) - Framework CSS (front-end)
-* [Atom](https://atom.io/) - Editeur de textes
-
-## Contributing
-
-Si vous souhaitez contribuer, lisez le fichier [CONTRIBUTING.md](https://example.org) pour savoir comment le faire.
-
-## Versions
-Listez les versions ici 
-_exemple :_
-**Dernière version stable :** 5.0
-**Dernière version :** 5.1
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
+* [kickstart.css](http://getkickstart.com/) - Framework CSS (front-end)
+* [Notepad++](https://notepad-plus-plus.org/) - Editeur de textes
+* [WAMP](http://www.wampserver.com/) - Stack serveur web
 
 ## Auteurs
-Listez le(s) auteur(s) du projet ici !
-* **Jhon doe** _alias_ [@outout14](https://github.com/outout14)
 
-Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
-
-_(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_
-
-## License
-
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+* **Juliette BONIAUD**
+* **Lilian JUDE**
+* **Solène SINNING**
+* **Jérémy MOUGEY**
