@@ -39,7 +39,7 @@ Rendez-vous sur http://localhost/acupuncture/accueil.php
 
 ## Cahiers des charges
 
-[X] Le site devra être aﬃchable et utilisable à partir d’une version de Firefox de moins de deux ans. 
+- [x] Le site devra être aﬃchable et utilisable à partir d’une version de Firefox de moins de deux ans. 
 
 ## Fabriqué avec
 
