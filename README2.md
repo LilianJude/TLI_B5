@@ -2,11 +2,12 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-README descriptif de notre site web
+Descriptif de notre site web
 
 ## Pour commencer
 
 Le site a été developpé sur une architecture WAMP 3.1.9. Le framework utilisé est Kickstart, le site est responsive.
+Notre site comporte 2 versions : Une version dite "templat" avec smarty mais qui ne comporte pas toutes les fonctionnalités et une seconde sans template qui est bien plus complète.
 
 ### Pré-requis
 
@@ -42,6 +43,12 @@ Rendez-vous sur http://localhost/acupuncture/accueil.php
 - [x] Vous réaliserez une page permettant d’aﬃcher la liste des pathologies. Ces pathologies pourront faire l’objet de ﬁltrage comme indiqué en introduction. 
 - [x] Vous implémenterez une fonctionnalité de recherche de pathologie par mot–clef. Cette fonctionnalité ne sera accessible qu’aux utilisateurs authentiﬁés.
 - [x] Vous proposerez un système de gestion des utilisateurs (inscription, login, session, etc.). Un utilisateur connecté aura la possibilité d’accéder à la fonctionnalité de recherche de pathologies par mot–clef
+
+## Divers
+
+- Nos requêtes SQL sont préparées avec PDO pour éviter les injections. 
+- Nous utilisons un compte par responsabilité en SQL, un en read-only, un second read-write.
+
 
 ## Fabriqué avec
 
