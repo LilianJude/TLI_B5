@@ -25,10 +25,10 @@ WAMP 3.1.9 comporte les logiciels et leurs versions suivantes :
 
 -Importez la base ``acu.sql`` 
 
--Ajoutez un compte acuRO avec le mot de passe `` McLWkiZfkyGqGu7x``
+-Ajoutez un compte acuRO avec le mot de passe `` McLWkiZfkyGqGu7x``.
 Cet utilisateur ne doit avoir qu'un droit SELECT sur la base acu
 
--Ajoutez un compte acuRW avec le mot de passe ``FS2nZXF57vshkiyS``
+-Ajoutez un compte acuRW avec le mot de passe ``FS2nZXF57vshkiyS``.
 Cet utilisateur doit avoir les droits SELECT, INSERT, UPDATE, DELETE sur la base acu
 
 -Ajoutez le site au VHOST Apache
@@ -39,7 +39,7 @@ Rendez-vous sur http://localhost/acupuncture/accueil.php
 
 ## Cahiers des charges
 
-[] Le site devra être aﬃchable et utilisable à partir d’une version de Firefox de moins de deux ans. 
+[X] Le site devra être aﬃchable et utilisable à partir d’une version de Firefox de moins de deux ans. 
 
 ## Fabriqué avec
 
