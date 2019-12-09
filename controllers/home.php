@@ -14,10 +14,14 @@
         $url='./index.php';
         header("Location: $url"); // Page redirecting to home.php
       }
-      else
-      {
-        $errorMsgLogin="Please check login details.";
-      }
+    }
+  }
+
+  if (isset($_POST['signupPseudo'], $_POST['signupPsw']) ) {
+    $memberEmail = $_POST['signupPseudo'];
+    $password = $_POST['signupPsw'];
+    if(strlen(trim($memberEmail))>1 && strlen(trim($password))>1 ){
+      $uid=$member->create($memberEmail,$password);
     }
   }
 ?>

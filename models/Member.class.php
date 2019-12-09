@@ -29,7 +29,7 @@ class Member
 
 //password_verify($_POST['pass'], $pass)
 
-			if($_POST['pass'] == $pass)
+			if(password_verify($_POST['pass'], $pass))
 			{
 				$this->username = $u;
 				$this->id = $row['id'];
@@ -54,10 +54,10 @@ class Member
 
 		if(!$this->usernameExists($u))
 		{
-			$q = $this->db->pdo->prepare("insert into membre (username, password) values(?,?)");
+			$q = $this->db->prepare("insert into membre (username, password) values(?,?)");
 			$q->execute([$u, $pass]);
 		} else {
-			die("username already exists, <a href=\"index.php\">try again</a>");
+			echo "<script type='text/javascript'>alert('Ce pseudo existe déjà, veuillez en choisir un autre');</script>";
 		}
 	}
 
