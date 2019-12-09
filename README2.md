@@ -6,8 +6,9 @@ Descriptif de notre site web
 
 ## Pour commencer
 
-Le site a été developpé sur une architecture WAMP 3.1.9. Le framework utilisé est Kickstart, le site est responsive.
-Notre site comporte 2 versions : Une version dite "templat" avec smarty mais qui ne comporte pas toutes les fonctionnalités et une seconde sans template qui est bien plus complète.
+Le site a été developpé sur une architecture WAMP 3.1.9. Le framework utilisé est Kickstart, le site est responsive.  
+
+Notre site comporte 2 versions : Une version dite "template" avec smarty mais qui ne comporte pas toutes les fonctionnalités et une seconde sans template qui est bien plus complète.
 
 ### Pré-requis
 
