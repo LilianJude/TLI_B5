@@ -155,51 +155,6 @@ include 'connect.php';
 		</div>
 		<span id="result_from_filter">
 		</span>
-		<?php
-		if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
-			<p>Veuillez vous connecter pour accéder à la recherche de pathologie par mot-clé</p>
-		<?php 
-		}
-		else
-		{
-		?>
-			<p>Recherche patho par symptome mot-clé :</p>
-			<!-- SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE name LIKE "%orteil%"-->
-			<form name="formkeyword" id="formkeyword">
-				<textarea name="keyword" id="keyword" onkeypress="press_key_enter(event, this)"></textarea>	
-				<input type="submit" value="Recherche" onclick="search_by_keyword()">
-			</form>
-		<?php
-			if(!(empty($_GET['keyword']))) { 
-
-				$reponse = $pdo->prepare('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE K.name LIKE "%'.$_GET['keyword'].'"');
-				//$reponse = $pdo->prepare('SELECT * FROM `patho` as P JOIN symptpatho as SP ON SP.idp = P.idp JOIN symptome as S ON S.idS = SP.idS JOIN keysympt as KS ON KS.ids = S.idS JOIN keywords as K ON K.idK = KS.idK WHERE K.name = "'.$_GET['keyword'].'"');
-				$reponse->execute();
-				if($reponse ->rowCount() > 0){
-				#$reponse = $pdo->query('select S.descr from symptome S join symptpatho SP on SP.idS = S.idS join patho P on P.idP = SP.idP where p.idp = $value');
-				// On affiche chaque entrée une à une
-					?>
-					<label for="select2">Pathologie : </label>
-					<p>
-					<?php
-					while ($donnees = $reponse->fetch()){
-						echo '<li>'.$donnees['description'].'</li>';
-						}
-					?>
-					</p>
-					<br/>
-				<?php 
-				}	
-				else 
-				{
-				?>
-				<p>Il n'y a pas de résultat pour votre requête avec ce mot-clé</p>
-				<?php
-				}
-			}
-		}
-				?>
-	
 	</div>
 </body>
 </html>

@@ -49,6 +49,14 @@ include 'connect.php';
 		</ul>
 	</div>
 	<div class="grid flex">
+	<?php
+		if(!(isset($_SESSION['user_id']) || isset($_SESSION['logged_in']))) { ?>
+			<p>Veuillez vous connecter pour accéder à la recherche de pathologie par mot-clé</p>
+	<?php 
+		}
+		else
+		{
+	?>
 		<p>Symptomes : <br/><br/>
 
 		<form action="autocomplete.php" method="post">
@@ -61,6 +69,8 @@ include 'connect.php';
 		<input type="button" value="RàZ" id="raz_radio_btn">
 		</p>
 	</div>
-
+	<?php
+		}
+	?>
 </body>
 </html>

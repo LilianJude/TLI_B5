@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 18 oct. 2019 à 08:51
+-- Généré le :  lun. 09 déc. 2019 à 19:58
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `keysympt` (
   `idK` int(11) NOT NULL,
   `idS` int(11) NOT NULL,
   PRIMARY KEY (`idK`,`idS`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `keysympt`
@@ -903,9 +903,9 @@ INSERT INTO `keysympt` (`idK`, `idS`) VALUES
 DROP TABLE IF EXISTS `keywords`;
 CREATE TABLE IF NOT EXISTS `keywords` (
   `idK` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id du mot clef',
-  `name` varchar(40) DEFAULT NULL COMMENT 'mot clef',
+  `name` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'mot clef',
   PRIMARY KEY (`idK`)
-) ENGINE=InnoDB AUTO_INCREMENT=347 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=347 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `keywords`
@@ -1268,11 +1268,11 @@ INSERT INTO `keywords` (`idK`, `name`) VALUES
 DROP TABLE IF EXISTS `membre`;
 CREATE TABLE IF NOT EXISTS `membre` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(60) NOT NULL,
+  `username` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `membre`
@@ -1281,7 +1281,10 @@ CREATE TABLE IF NOT EXISTS `membre` (
 INSERT INTO `membre` (`id`, `username`, `password`) VALUES
 (1, 'test', '$2y$12$ss5AKRIBj.CweF/ptk4oDewCYn17K/bd.iiDjNrOa.B2n/4Sb6XQK'),
 (2, 'test1', '$2y$12$MZxRuwNwqcXFa4BO6wKIpOrBinpetgflcyF.zK4I7iyleTAIIvwjG'),
-(3, 'solene', '$2y$12$WzIwht29Ehi0aGGm0MBDWe/FzeSp.AKaguKxMBmEx7xZJfqhFgGjq');
+(3, 'solene', '$2y$12$WzIwht29Ehi0aGGm0MBDWe/FzeSp.AKaguKxMBmEx7xZJfqhFgGjq'),
+(4, 'test55', '$2y$12$CMRuz736hE6Wmv3Ue5ODveB7zL5gCJqK.Ack2Agi4UxGtdRTZxUga'),
+(5, 'test56', '$2y$12$WPi4DUfBEr17gQevfwLq2ukc1jlzZx4BQeT3ZEJgL2yFNXnlfSWE6'),
+(6, 'testmozzila', '$2y$12$XjJjtdp5pnHNTh1mmoZivuGZkto0h/Y0DdhS4v468WLbNV4Md.2c2');
 
 -- --------------------------------------------------------
 
@@ -1291,23 +1294,23 @@ INSERT INTO `membre` (`id`, `username`, `password`) VALUES
 
 DROP TABLE IF EXISTS `meridien`;
 CREATE TABLE IF NOT EXISTS `meridien` (
-  `code` varchar(5) NOT NULL COMMENT 'code du méridien',
-  `nom` varchar(20) NOT NULL COMMENT 'nom',
-  `element` varchar(1) NOT NULL COMMENT 'élément',
+  `code` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'code du méridien',
+  `nom` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'nom',
+  `element` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'élément',
   `yin` tinyint(1) NOT NULL COMMENT 'vrai si yin',
   PRIMARY KEY (`code`),
   KEY `element` (`element`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `meridien`
 --
 
 INSERT INTO `meridien` (`code`, `nom`, `element`, `yin`) VALUES
-('+QM', 'Yang Qiao Mai', '', 0),
-('+WM', 'Yang Wei Mai', '', 0),
 ('-QM', 'Yin Qiao Mai', '', 1),
 ('-WM', 'Yin Wei Mai', '', 1),
+('+QM', 'Yang Qiao Mai', '', 0),
+('+WM', 'Yang Wei Mai', '', 0),
 ('C', 'Coeur', 'f', 1),
 ('ChM', 'Chong Mai', '', 1),
 ('DaiM', 'Dai Mai', '', 0),
@@ -1334,12 +1337,12 @@ INSERT INTO `meridien` (`code`, `nom`, `element`, `yin`) VALUES
 DROP TABLE IF EXISTS `patho`;
 CREATE TABLE IF NOT EXISTS `patho` (
   `idP` int(11) NOT NULL AUTO_INCREMENT,
-  `mer` varchar(5) NOT NULL COMMENT 'code du méridien',
-  `type` varchar(10) NOT NULL,
-  `description` varchar(50) NOT NULL COMMENT 'description de la pathologie',
+  `mer` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'code du méridien',
+  `type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'description de la pathologie',
   PRIMARY KEY (`idP`),
   KEY `code` (`mer`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `patho`
@@ -1469,9 +1472,9 @@ INSERT INTO `patho` (`idP`, `mer`, `type`, `description`) VALUES
 DROP TABLE IF EXISTS `symptome`;
 CREATE TABLE IF NOT EXISTS `symptome` (
   `idS` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id du symptome',
-  `descr` mediumtext NOT NULL COMMENT 'description du symptôme',
+  `descr` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'description du symptôme',
   PRIMARY KEY (`idS`)
-) ENGINE=InnoDB AUTO_INCREMENT=449 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=449 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `symptome`
@@ -1934,7 +1937,7 @@ CREATE TABLE IF NOT EXISTS `symptpatho` (
   `idP` int(11) NOT NULL,
   `aggr` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Vrai si symptôme d''aggravation',
   PRIMARY KEY (`idS`,`idP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `symptpatho`

@@ -91,6 +91,7 @@ $('#raz_radio_btn').click(function (e) {
 	e.preventDefault();
 	$('input[name=li1]').prop('checked',false);
 	$('input[name=li2]').prop('checked',false);
-		});
+	$('#symptomes').val('');
+	});
 });
 
